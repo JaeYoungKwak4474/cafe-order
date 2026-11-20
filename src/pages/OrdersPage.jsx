@@ -10,7 +10,7 @@ function OrdersPage({ user }) {
 
   useEffect(() => {
     const q = query(collection(db, "users", user.uid, "orders"), orderBy("createdAt", "desc"));
-    const unsubscribe = 	onSnapshot(
+    const unsubscribe = onSnapshot(
       q,
       (snapshot) => {
         setOrders(snapshot.docs.map((d) => ({ id: d.id, ...d.data() })));

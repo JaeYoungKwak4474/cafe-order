@@ -10,10 +10,10 @@ function CartPage({ cart, user, onRemove, onClear }) {
   const total = cart.reduce((sum, menu) => sum + menu.price, 0);
 
   function handleOrder() {
-    	addDoc(collection(db, "users", user.uid, "orders"), {
+    addDoc(collection(db, "users", user.uid, "orders"), {
       items: cart.map((menu) => menu.name),
       total,
-      createdAt: 	serverTimestamp(),
+      createdAt: serverTimestamp(),
     })
       .then(() => {
         onClear(); // 주문했으면 장바구니를 비움
